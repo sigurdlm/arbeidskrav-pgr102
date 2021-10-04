@@ -99,26 +99,15 @@
             difficultyText.remove();      
         }
 
-        function rightOrWrong1(){
-            randomNumber = Math.floor(Math.random()*2+1);
+        function createNumber(){
+            randomNumber = Math.floor(Math.random()*2 + 1);
+            console.log(randomNumber);
+        }
+
+
+        function rightOrWrong(){
 
             if (randomNumber == box1) {
-                numberOfRightAnswersDiv.innerHTML = `Antall riktige: ${points += 1}`;
-                checkPoints();
-                winState();
-
-            }else{
-                life -= 1;
-                numberOfWrongAnswersDiv.innerHTML = `Antall feil: ${negativePoints += 1}`;
-                checkLife();
-                lossState();
-            }   
-        }  
-        
-        function rightOrWrong2(){
-            randomNumber = Math.floor(Math.random()*2+1);
-
-            if (randomNumber == box2) {
                 numberOfRightAnswersDiv.innerHTML = `Antall riktige: ${points += 1}`;
                 checkPoints();
                 winState();
@@ -181,27 +170,24 @@
         Om ikke, får vi en alert som sier at vi må velge og siden lastes inn på nytt. Om vi har valgt en vanskelighetsgrad
         kjøres funksjonen rightOrWrong som sjekker om svaret er rett eller feil. */
 
-        function needDifficulty1(){
+        function needDifficulty(){
             if (easy  === false && medium  === false && hard === false) {
                 alert("Du må velge vansklighetsgrad!!!");
                 location.reload();
             }else{
-                rightOrWrong1();
+                rightOrWrong();
             }
         }
 
-        function needDifficulty2(){
-            if (easy  === false && medium  === false && hard === false) {
-                alert("Du må velge vansklighetsgrad!!!");
-                location.reload();
-            }else{
-                rightOrWrong2();
-            }
+        function initFunction(){
+            createNumber();
         }
+
+        initFunction();
 
         // Events
-        box1Div.onclick = needDifficulty1;
-        box2Div.onclick = needDifficulty2;
+        box1Div.onclick = rightOrWrong;
+        box2Div.onclick = rightOrWrong;
         easyBtn.onclick = chooseEasy;
         mediumBtn.onclick = chooseMedium;
         hardBtn.onclick = chooseHard;
