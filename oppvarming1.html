@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 1</title>
+</head>
+<body>
+    
+    <input id="add-images-btn" type="button" value="Legg til bilder">
+    <p>Antall bilder: <span id="number-of-images-span">0</span></p>
+    <div id="output-div"></div>
+
+    <script>    
+        // HTML Objekter vi henter inn og tilfeldige nummer variablene blir deklarert.
+        var addImagesBtn = document.getElementById("add-images-btn");
+        var outputDiv = document.getElementById("output-div");
+        var numberOfImagesSpan = document.getElementById("number-of-images-span");
+        var randomNumber;
+        var randomImageNumber;
+
+        /* Funksjon som setter verdien til output div som tom for hver gang funksjonen kjøres, 
+        lager et tilfeldig tall mellom 0 og 99 som bestemmer hvor mange ganger løkken kjøres. */
+        function createImages(){
+            outputDiv.innerHTML = "";
+            randomNumber = Math.floor(Math.random()*100);
+
+
+        /* Her startet for-løkken, den sier at den skal kjøre like mange ganger som randomNumber sier. 
+        Her settes også randomImageNumber som skal bestemme hvilket bilde som printes. */
+            for(var i = 0; i < randomNumber; i++){
+                numberOfImagesSpan.innerHTML = randomNumber;
+                randomImageNumber = Math.floor(Math.random()*4+1);
+
+
+            /* If else som skjekker randomImageNumber hver gang for-løkken kjøres, 
+            printer image basert på hvilket tall mellom 1 og 4 som vises. */
+                if(randomImageNumber == 1){
+                    outputDiv.innerHTML += `<img src="images/person1.jpg">`;
+                }else if(randomImageNumber == 2){
+                    outputDiv.innerHTML += `<img src="images/person2.jpg">`;
+                }else if(randomImageNumber == 3){
+                    outputDiv.innerHTML += `<img src="images/person3.jpg">`;
+                }else if(randomImageNumber == 4){
+                    outputDiv.innerHTML += `<img src="images/person4.jpg">`;
+                }
+            }
+        }
+
+        // Her settes funksjonen i gang ved hjelp av onclick.
+        addImagesBtn.onclick = createImages;
+    </script>
+
+</body>
+</html>

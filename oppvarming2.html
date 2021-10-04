@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 2</title>
+</head>
+<body>
+    
+    <!-- HTML objekter, vi valgte å legge til en knapp som reloader siden slik at man kan spille spillet på nytt. -->
+    <h3>Klikk på den du tror har en katt!</h3>
+    <img id="check-person1-img" src="images/person1.jpg">
+    <img id="check-person2-img" src="images/person2.jpg">
+    <br>
+    <input type="button" value="Trykk her for å laste inn siden på nytt" id="reload-btn">
+    <div id="output-div"></div>
+    
+    <script>
+        // Henter inn HTML objekter, deklarerer tilfeldig tall og knappen som reloader siden. 
+        var checkPerson1Img = document.getElementById("check-person1-img");
+        var checkPerson2Img = document.getElementById("check-person2-img");
+        var outputDiv = document.getElementById("output-div");
+        var oneOrTwo = Math.floor(Math.random()*2+1);
+        var reloadBtn = document.getElementById("reload-btn");
+
+        // Funksjon som sjekker for person 1 om det er en katteperson, om det tilfeldige tallet er 1 vises katt, hvis ikke frosk.
+        function catOrFrogPerson1(){
+            if(oneOrTwo == 1){
+                outputDiv.innerHTML = `Mari har en katt! <br> <img src="images/cat.jpg">`;
+            }else{
+                outputDiv.innerHTML = `Mari har en frosk <br> <img src="images/frog.jpg">`;
+            }
+        }
+
+        // Funksjon som sjekker for person 2 om det er en katteperson, om det tilfeldige tallet er 2 vises katt, hvis ikke frosk.
+        function catOrFrogPerson2(){
+            if(oneOrTwo == 2){
+                outputDiv.innerHTML = `Ola har en katt! <br> <img src="images/cat.jpg">`;
+            }else{
+                outputDiv.innerHTML = `Ola har en frosk <br> <img src="images/frog.jpg">`;
+            }
+        }
+
+        // Funksjon som laster inn siden på nytt slik at man kan sjekke kattestemning på nytt.
+        function reloadPage(){
+            location.reload();
+        }
+
+        // Her starter funksjonene våres via onclick.
+        checkPerson1Img.onclick = catOrFrogPerson1;
+        checkPerson2Img.onclick = catOrFrogPerson2;
+        reloadBtn.onclick = reloadPage;
+    </script>
+
+</body>
+</html>
